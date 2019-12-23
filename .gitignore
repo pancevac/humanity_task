@@ -1,0 +1,5 @@
+.idea
+.vscode
+humanity_task/vendor
+humanity_task/resources/cache
+humanity_task/.env

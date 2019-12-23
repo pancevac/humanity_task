@@ -1,0 +1,25 @@
+<table style="border: black 1px solid">
+    <thead>
+    <tr>
+        <td>Employee</td>
+        <td>Position (Schedule)</td>
+        <td>Shift</td>
+        <td>Timeclock</td>
+    </tr>
+    </thead>
+    <tbody>
+    {% for shift in shifts %}
+        <tr>
+            <td>{{ shift.getEmployee.getName }}</td>
+            <td>{{ shift.getPosition }}</td>
+            <td>{{ shift.getStartDate }} - {{ shift.getEndDate }}</td>
+            <td>{% if shift.getTimeClock %}
+                    {{ shift.getTimeClock.getInTime }} - {{ shift.getTimeClock.getOutTime }}
+                {% else %}
+                    /
+                {% endif %}
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
