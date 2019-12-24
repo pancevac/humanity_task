@@ -6,7 +6,7 @@ namespace App\Api;
 
 use App\Entities\Shift;
 
-abstract class AbstractHumanity
+abstract class GenericHumanity
 {
     /**
      * @var \DateTime
@@ -24,12 +24,12 @@ abstract class AbstractHumanity
     protected $shifts = [];
 
     /**
-     * Fill and return shift object with data.
+     * Create and return new shift object with data.
      *
      * @param $shiftData
      * @return Shift
      */
-    abstract protected function hydrateShift($shiftData): Shift;
+    abstract protected function createShift($shiftData): Shift;
 
     /**
      * Call lifecycle method to signal child class for calling requests...
@@ -55,7 +55,7 @@ abstract class AbstractHumanity
 
         // This will ensure that returning array is filled with Shift objects...
         return array_map(function ($shift) {
-            return $this->hydrateShift($shift);
+            return $this->createShift($shift);
         }, $this->shifts);
     }
 }

@@ -9,7 +9,7 @@ use App\Entities\Shift;
 use App\Entities\TimeClock;
 use App\Libraries\ShiftPlaning;
 
-class HumanityApiV1 extends AbstractHumanity
+class HumanityApiV1 extends GenericHumanity
 {
     /**
      * @var ShiftPlaning
@@ -47,13 +47,13 @@ class HumanityApiV1 extends AbstractHumanity
     }
 
     /**
-     * Fill and return shift object with data.
+     * Create and return new shift object with data.
      *
      * @param $shiftData
      * @return Shift
      * @throws \Exception
      */
-    protected function hydrateShift($shiftData): Shift
+    protected function createShift($shiftData): Shift
     {
         $relatedTimeClock = $this->findRelatedTimeClock($shiftData);
 

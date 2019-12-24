@@ -5,6 +5,7 @@ namespace App;
 
 
 use App\Api\HumanityApiV1;
+use App\Api\HumanityApiV2;
 use App\Classes\HumanityManager;
 
 class Application
@@ -36,6 +37,6 @@ class Application
 
         $shifts = $entityManager->getShifts($startDate, $endDate);
 
-        return $this->template->render('list.html.twig', compact('shifts'));
+        return $this->template->render('index.html.twig', compact('shifts'));
     }
 }

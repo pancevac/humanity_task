@@ -4,13 +4,13 @@
 namespace App\Classes;
 
 
-use App\Api\AbstractHumanity;
+use App\Api\GenericHumanity;
 
 class HumanityManager
 {
     protected $humanityApi;
 
-    public function __construct(AbstractHumanity $humanityApi)
+    public function __construct(GenericHumanity $humanityApi)
     {
         $this->humanityApi = $humanityApi;
     }
