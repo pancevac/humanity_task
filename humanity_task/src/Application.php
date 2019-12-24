@@ -4,9 +4,8 @@
 namespace App;
 
 
-use App\Classes\HumanityApiV1;
+use App\Api\HumanityApiV1;
 use App\Classes\HumanityManager;
-use App\Classes\FakeHumanityApi;
 
 class Application
 {
@@ -28,8 +27,10 @@ class Application
         // set time/zone of app
         date_default_timezone_set('Europe/Belgrade');
 
+        // Here, we can swap different concrete implementation of Humanity API
         $entityManager = new HumanityManager(new HumanityApiV1());
 
+        // Define time interval for shifts
         $startDate = (new \DateTime('yesterday'));
         $endDate = (new \DateTime('today'));
 
