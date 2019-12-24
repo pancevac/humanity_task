@@ -19,6 +19,8 @@ class HumanityApiV1 implements HumanityApiInterface
         $this->planingShifts = new ShiftPlaning([
             'key' => getenv('API_KEY'),
         ]);
+
+        $this->InitSession();
     }
 
     /**
@@ -72,7 +74,6 @@ class HumanityApiV1 implements HumanityApiInterface
             'mode' => 'overview',
             'start_date' => $startTime->format('Y-m-d H:i:s'),
             'end_date' => $endTime->format('Y-m-d H:i:s'),
-            'token' => getenv('API_TOKEN'),
         ]);
     }
 
@@ -92,7 +93,6 @@ class HumanityApiV1 implements HumanityApiInterface
             'method' => 'GET',
             'start_date' => $startTime->format('Y-m-d'),
             'end_date' => $endTime->format('Y-m-d'),
-            'token' => getenv('API_TOKEN'),
         ]);
     }
 
@@ -114,7 +114,6 @@ class HumanityApiV1 implements HumanityApiInterface
             'employee_id' => $employeeId,
             'start_date' => $startTime->format('Y-m-d'),
             'end_date' => $endTime->format('Y-m-d'),
-            'token' => getenv('API_TOKEN'),
         ]);
     }
 
@@ -133,5 +132,24 @@ class HumanityApiV1 implements HumanityApiInterface
         }
 
         return;
+    }
+
+    /**
+     * Init session, check if exist, otherwise do login...
+     */
+    private function InitSession(): void
+    {
+        // Check session
+        if (!$this->planingShifts->getSession()) {
+            $response = $this->planingShifts->doLogin([
+                'username' => getenv('API_USERNAME'),
+                'password' => getenv('API_PASSWORD')
+            ]);
+
+            if ($response['status']['code'] != 1) {
+                // display the login error to the user
+                echo $response['status']['text'] . "--" . $response['status']['error'];
+            }
+        }
     }
 }
