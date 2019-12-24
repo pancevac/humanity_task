@@ -91,8 +91,8 @@ class HumanityApiV1 implements HumanityApiInterface
         return $this->planingShifts->setRequest([
             'module' => 'timeclock.timeclocks',
             'method' => 'GET',
-            'start_date' => $startTime->format('Y-m-d'),
-            'end_date' => $endTime->format('Y-m-d'),
+            'start_date' => $startTime->format('Y-m-d H:i:s'),
+            'end_date' => $endTime->format('Y-m-d H:i:s'),
         ]);
     }
 
@@ -112,8 +112,8 @@ class HumanityApiV1 implements HumanityApiInterface
             'module' => 'timeclock.timeclocks',
             'method' => 'GET',
             'employee_id' => $employeeId,
-            'start_date' => $startTime->format('Y-m-d'),
-            'end_date' => $endTime->format('Y-m-d'),
+            'start_date' => $startTime->format('Y-m-d H:i:s'),
+            'end_date' => $endTime->format('Y-m-d H:i:s'),
         ]);
     }
 
