@@ -24,8 +24,8 @@ services:
     restart: unless-stopped
     tty: true
     ports:
-      - "81:80"
-      - "444:443"
+      - "80:80"
+      - "443:443"
     volumes:
       - ./humanity_task/:/var/www
       - ./.docker/nginx/conf.d/:/etc/nginx/conf.d/
