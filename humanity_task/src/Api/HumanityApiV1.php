@@ -138,7 +138,7 @@ class HumanityApiV1 extends GenericHumanity
 
             if ($response['status']['code'] != 1) {
                 // display the login error to the user
-                echo $response['status']['text'] . "--" . $response['status']['error'];
+                exit($response['status']['text'] . "--" . $response['status']['error']);
             }
         }
     }
