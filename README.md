@@ -13,7 +13,7 @@ docker-compose up -d
 // Log into humanity app container (php v7.3)
 docker exec -it humanity_app bash
 
-// Finnaly run
+// Finally run
 composer install
 ```
 

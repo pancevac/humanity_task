@@ -32,8 +32,8 @@ class Application
         $entityManager = new HumanityManager(new HumanityApiV1());
 
         // Define time interval for shifts
-        $startDate = (new \DateTime('today'));
-        $endDate = (new \DateTime('today'));
+        $startDate = new \DateTime('today');
+        $endDate = new \DateTime('today');
 
         $shifts = $entityManager->getShifts($startDate, $endDate);
 
